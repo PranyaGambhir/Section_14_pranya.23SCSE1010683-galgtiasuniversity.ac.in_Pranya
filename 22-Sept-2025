@@ -20,3 +20,48 @@ class Solution {
 
 
 ************************************************************ || leetcode question - 152 || ************************************************************
+class Solution {
+    public int maxProduct(int[] nums) {
+        int maxProd = nums[0];  
+        int minProd = nums[0];   
+        int result = nums[0];    
+        for (int i = 1; i < nums.length; i++) {
+            int curr = nums[i];
+            if (curr < 0) {
+                int temp = maxProd;
+                maxProd = minProd;
+                minProd = temp;
+            }
+            maxProd = Math.max(curr, maxProd * curr);
+            minProd = Math.min(curr, minProd * curr);
+            result = Math.max(result, maxProd);
+        }
+        return result;
+    }
+}
+
+
+
+
+************************************************************ || leetcode question - 485 || ************************************************************
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int maxCount = 0;
+        int currentCount = 0;
+        for (int num : nums) {
+            if (num == 1){
+                currentCount++;
+                maxCount = Math.max(maxCount, currentCount);
+            }
+            else{
+               currentCount = 0; 
+            }
+        }
+        return maxCount;
+    }
+}
+
+
+
+
+
